@@ -1,16 +1,42 @@
 # ny_times
 
-A new Flutter project.
 
-## Getting Started
+**Used patterns**:
+- BLoC.
+- Clean Architecture Layers (TDD).
 
-This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## Main Dependencies:
+1. **Flutter BLoC** for State Management.
+2. **Get It** (Service Locator and Dependencies container).
+4. **Http Package** (Http Client).
+5. **BLoC Test**.
+6. **mockito & bloc_test** for testing.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+### Project structure:
+ny_times
+├─ lib
+│  ├─ features
+│  │  └─ most_popular_articles
+│  │     ├─ data
+│  │     │  ├─ data_source
+│  │     │  ├─ models
+│  │     │  └─ repository
+│  │     ├─ domain
+│  │     │  ├─ repository
+│  │     │  └─ use_case
+│  │     └─ presentation
+│  │        ├─ bloc
+│  │        ├─ screens
+│  ├─ injection.dart
+│  └─ main.dart
+├─ pubspec.lock
+├─ pubspec.yaml
+├─ README.md
+└─ test
+   └─ features
+      └─ most_popular_articles
+         └─ presentation
+            └─ bloc
+
