@@ -8,6 +8,8 @@ import 'package:ny_times/features/most_popular_articles/presentation/bloc/most_p
 import 'package:ny_times/features/most_popular_articles/presentation/bloc/most_popular_articles_state.dart';
 import 'package:ny_times/features/most_popular_articles/presentation/widgets/article_card.dart';
 
+import '../../../../../core/widgets/app_error_widget.dart';
+
 class ArticleListPage extends StatefulWidget {
   const ArticleListPage({Key? key, required this.period}) : super(key: key);
   final ArticlesPeriod period;
@@ -32,13 +34,7 @@ class _ArticleListPageState extends State<ArticleListPage> {
           state.articlesStatus == ArticlesStatus.initial) {
         return const AppLoadingWidget();
       } else if (state.articlesStatus == ArticlesStatus.failure) {
-        return ElevatedButton(
-          onPressed: () => _bloc.add(ArticlesFetched(period: widget.period)),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: const [Icon(Icons.refresh), Text('Something went wrong try again')],
-          ),
-        );
+        return AppErrorWidget(onClick: () => _bloc.add(ArticlesFetched(period: widget.period)));
       }
       return CustomScrollView(
         physics: const BouncingScrollPhysics(),

@@ -59,7 +59,7 @@ class ArticleCard extends StatelessWidget {
                               children: [
                                 Text(article?.section ?? ''),
                                 const Spacer(),
-                                Text(timeago.format(article?.updated ?? DateTime.now())),
+                                Text(timeago.format(article?.publishedDate ?? DateTime.now())),
                               ],
                             )
                           ],

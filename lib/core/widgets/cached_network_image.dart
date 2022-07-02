@@ -30,7 +30,7 @@ class CachedNetworkImageView extends StatelessWidget {
               fit: boxFit ?? BoxFit.cover,
               width: width,
               height: height,
-              placeholder: (context, imageUrl) => const CircularProgressIndicator(),
+              placeholder: (context, imageUrl) => Container(),
               errorWidget: (context, imageUrl, error) => _buildErrorWidget(),
             ),
     );

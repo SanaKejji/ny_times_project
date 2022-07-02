@@ -1,7 +1,5 @@
 import 'package:json_annotation/json_annotation.dart';
-part 'media.g.dart';
 
-@JsonSerializable(explicitToJson: true)
 class Media {
   Media({
     required this.type,
@@ -9,38 +7,37 @@ class Media {
     required this.mediaMetadata,
   });
 
-  final String? type;
+  final String type;
 
-  final String? caption;
+  final String caption;
 
-  final List<MediaMetadata>? mediaMetadata;
+  final List<MediaMetadata> mediaMetadata;
 
-  factory Media.fromJson(Map<String, dynamic> json) {
-    return _$MediaFromJson(json);
-  }
-
-  Map<String, dynamic> toJson() {
-    return _$MediaToJson(this);
-  }
+  factory Media.fromJson(Map<String, dynamic> json) => Media(
+        type: json["type"],
+        caption: json["caption"],
+        mediaMetadata:
+            List<MediaMetadata>.from(json["media-metadata"].map((x) => MediaMetadata.fromJson(x))),
+      );
 }
 
-@JsonSerializable()
 class MediaMetadata {
   MediaMetadata({
     required this.url,
     required this.format,
   });
 
-  final String? url;
-  final MediaType? format;
+  final String url;
+  final MediaType format;
 
-  factory MediaMetadata.fromJson(Map<String, dynamic> json) {
-    return _$MediaMetadataFromJson(json);
-  }
+  factory MediaMetadata.fromJson(Map<String, dynamic> json) => MediaMetadata(
+        url: json["url"],
+        format: mapNames()[json['format']]!,
+      );
+}
 
-  Map<String, dynamic> toJson() {
-    return _$MediaMetadataToJson(this);
-  }
+Map<String, MediaType> mapNames() {
+  return Map.fromEntries(MediaType.values.map((e) => MapEntry(e.name, e)));
 }
 
 enum MediaType {
@@ -60,8 +57,4 @@ extension MediaTypeEx on MediaType {
         return 'mediumThreeByTwo440';
     }
   }
-}
-
-Map<String, MediaType> mapNames() {
-  return Map.fromEntries(MediaType.values.map((e) => MapEntry(e.name, e)));
 }

@@ -10,13 +10,13 @@ class ArticlesDataSource with HandlingResponse {
     final section = params['section'];
     final endPoint =
         '${ApiUrls.baseURL}/mostpopular/v2/mostviewed/$section/$period.json?api-key=${ApiUrls.kAPIKey}';
+    print(endPoint);
     var url = Uri.parse(endPoint);
     http.Response response = await http.get(url).timeout(const Duration(seconds: 30));
     print('Response status: ${response.statusCode}');
     print('Response body: ${response.body}');
 
     if (response.statusCode == 200) {
-      print('hiii ${jsonDecode(response.body)['results']}');
       return articlesListFromMap(jsonDecode(response.body)['results']);
     } else {
       Exception exception = getException(response.statusCode);
