@@ -15,6 +15,8 @@
 6. **mockito & bloc_test** for testing.
 
 ### Project structure:
+
+```
 ny_times
 ├─ lib
 │  ├─ features
@@ -39,6 +41,9 @@ ny_times
       └─ most_popular_articles
          └─ presentation
             └─ bloc
+
+```
+
 
 for test Code Coverage HTML Reports
 
