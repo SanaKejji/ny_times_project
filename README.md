@@ -42,6 +42,6 @@ ny_times
 
 for test Code Coverage HTML Reports
 
-first run in your terminal: Coverage HTML Reports
+first run in project terminal: Coverage HTML Reports
 then run: flutter test --coverage
 then run: genhtml ./coverage/lcov.info -o coverage
